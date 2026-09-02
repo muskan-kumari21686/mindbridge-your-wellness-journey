@@ -44,10 +44,12 @@ export const GARDEN_STAGES = [
   { name: "Bloom", emoji: "🌸", min: 240 },
 ] as const;
 
+type GardenStage = (typeof GARDEN_STAGES)[number];
+
 export function gardenStage(xp: number) {
-  let stage = GARDEN_STAGES[0];
+  let stage: GardenStage = GARDEN_STAGES[0];
   for (const s of GARDEN_STAGES) if (xp >= s.min) stage = s;
-  const index = GARDEN_STAGES.indexOf(stage);
+  const index = GARDEN_STAGES.findIndex((s) => s.name === stage.name);
   const next = GARDEN_STAGES[index + 1];
   const progress = next
     ? Math.round(((xp - stage.min) / (next.min - stage.min)) * 100)
