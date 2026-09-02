@@ -196,7 +196,7 @@ export function safeTalkReply(text: string): string {
   const t = text.toLowerCase();
   const intent = INTENTS.find((i) => i.keys.some((k) => t.includes(k)));
   if (intent) return intent.reply;
-  return FALLBACKS[Math.floor(Math.random() * FALLBACKS.length)];
+  return FALLBACKS[Math.floor(Math.random() * FALLBACKS.length)] ?? FALLBACKS[0]!;
 }
 
 export function supportPersonReply(text: string, name: string): string {

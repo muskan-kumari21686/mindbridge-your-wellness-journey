@@ -6,7 +6,7 @@ export const DEMO_ANON_ID = "MB-7F3A92";
 export function generateAnonId(): string {
   const chars = "0123456789ABCDEF";
   let out = "";
-  for (let i = 0; i < 6; i++) out += chars[Math.floor(Math.random() * chars.length)];
+  for (let i = 0; i < 6; i++) out += chars[Math.floor(Math.random() * chars.length)]!;
   return `MB-${out}`;
 }
 
